@@ -6,21 +6,21 @@ package frc.robot;
 
 public class Constants {
   // MOTORs
-  public static final int DRIVETRAIN_LEFT_FRONT_MOTOR = 0;
-  public static final int DRIVETRAIN_LEFT_BACK_MOTOR = 1;
-  public static final int DRIVETRAIN_RIGHT_FRONT_MOTOR = 2;
-  public static final int DRIVETRAIN_RIGHT_BACK_MOTOR = 3;
+  public static final int DRIVETRAIN_LEFT_FRONT_MOTOR = 22;
+  public static final int DRIVETRAIN_LEFT_BACK_MOTOR = 23;
+  public static final int DRIVETRAIN_RIGHT_FRONT_MOTOR = 20;
+  public static final int DRIVETRAIN_RIGHT_BACK_MOTOR = 21;
 
-  public static final Double speed = 0.6;
+  public static final Double speed = 1.0;
   // Joysticks
   public static final int JOYSTICK_PORT = 0;  
   public static final int DRIVER_CONTROLLER = 0;
         
   //This tells us which part of the joystick will be used
   // 1 = to the left stick's y axis
-  public static final int LEFT_AXIS = 1; 
-  // 4 = to the right stick's y axis 
-  public static final int RIGHT_AXIS = 5;  
+  public static final int RIGHT_AXIS = 4; 
+  // 5 = to the right stick's y axis 
+  public static final int LEFT_AXIS = 1;  
   // 1 = the a button on joystick
   public static final int A_BUTTON = 1;
   // 2 = the b button on joystick

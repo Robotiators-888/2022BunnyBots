@@ -3,7 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj2.command.Command;
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
-  public static final Drivetrain m_drivetrain = new Drivetrain();
+  
  
 
   public Joystick joystick = new Joystick(Constants.DRIVER_CONTROLLER);
@@ -26,8 +26,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.LEFT_AXIS),
-      () -> joystick.getRawAxis(Constants.RIGHT_AXIS), () -> Constants.speed));
+    drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.RIGHT_AXIS),
+      () -> joystick.getRawAxis(Constants.LEFT_AXIS), () -> Constants.speed));
 
     // Set default commands on subsystems
   }

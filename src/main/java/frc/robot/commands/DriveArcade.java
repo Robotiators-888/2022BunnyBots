@@ -16,7 +16,7 @@ public class DriveArcade extends CommandBase {
     this.speedRight = R;
     this.speed = S;
 
-    addRequirements(drivetrain);
+    addRequirements(drive);
   }
   
   // Called just before this Command runs the first time

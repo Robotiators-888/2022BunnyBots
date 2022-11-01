@@ -36,8 +36,8 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void DriveInversion(){
-    leftMotors.setInverted(true);
-    rightMotors.setInverted(true);
+    leftMotors.setInverted(false);
+    rightMotors.setInverted(false);
   }
   @Override
   public void periodic() {
