@@ -1,8 +1,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 
 /**
@@ -13,11 +16,16 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Drivetrain drivetrain = new Drivetrain();
+  public final Drivetrain drivetrain = new Drivetrain();
   
- 
+  public final Pneumatics pneumatics = new Pneumatics();
+  
+  DoubleSolenoid m_doubleSolenoid = pneumatics.m_doubleSolenoid;
+  Compressor m_Compressor = pneumatics.m_Compressor;
 
   public Joystick joystick = new Joystick(Constants.DRIVER_CONTROLLER);
+
+  JoystickButton C_aButton = new JoystickButton(joystick, 1);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -25,6 +33,9 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    //Piston button
+    C_aButton.whileActiveOnce(new Piston(pneumatics));
 
     drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.RIGHT_AXIS),
       () -> joystick.getRawAxis(Constants.LEFT_AXIS), () -> Constants.speed));
