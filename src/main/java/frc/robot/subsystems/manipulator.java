@@ -63,13 +63,4 @@ public class manipulator extends SubsystemBase {
     elevation.set(0.0);
  }
 
- public void clampClamp(){
-   elevationSpeed = Constants.CLAMP_SPEED;
-   clamp.set(clampSpeed);
- }
-
- public void clampOpen(){
-   clampSpeed *= -1;
-   clamp.set(clampSpeed);
- }
 }
