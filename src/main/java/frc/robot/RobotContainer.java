@@ -42,8 +42,6 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    aButton.whileHeld((new ClampClampCMD(Manipulator)));
-
     lTrigger.whileHeld(new ElevationDownCMD(Manipulator));
 
     rTrigger.whileHeld(new ElevationUpCMD(Manipulator));

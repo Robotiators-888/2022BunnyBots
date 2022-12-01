@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,11 +15,11 @@ public class manipulator extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public WPI_VictorSPX left = new WPI_VictorSPX(Constants.MANIPULATOR_ARM_MOTOR);
-  public WPI_VictorSPX right = new WPI_VictorSPX(Constants.MANIPULATOR_LIFT_MOTOR);
-  public WPI_VictorSPX elevation = new WPI_VictorSPX(Constants.ELEVATION);
+  public CANSparkMax left = new CANSparkMax(Constants.MANIPULATOR_ARM_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
+  public CANSparkMax right = new CANSparkMax(Constants.MANIPULATOR_LIFT_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
+  public CANSparkMax elevation = new CANSparkMax(Constants.ELEVATION, CANSparkMaxLowLevel.MotorType.kBrushed);
   double elevationSpeed = Constants.ELEVATION_SPEED;
-  public WPI_VictorSPX clamp = new WPI_VictorSPX(Constants.CLAMP);
+  public CANSparkMax clamp = new CANSparkMax(Constants.CLAMP, CANSparkMaxLowLevel.MotorType.kBrushed);
   double clampSpeed = Constants.CLAMP_SPEED;
 
   MotorControllerGroup leftMotors = null;
@@ -62,5 +63,4 @@ public class manipulator extends SubsystemBase {
     elevationSpeed = 0;
     elevation.set(0.0);
  }
-
 }
