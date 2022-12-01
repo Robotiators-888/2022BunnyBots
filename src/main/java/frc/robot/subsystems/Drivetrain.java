@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,10 +16,10 @@ public class Drivetrain extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public WPI_VictorSPX leftPrimary = new WPI_VictorSPX(Constants.DRIVETRAIN_LEFT_FRONT_MOTOR);
-  public WPI_VictorSPX leftSecondary = new WPI_VictorSPX(Constants.DRIVETRAIN_LEFT_BACK_MOTOR);
-  public WPI_VictorSPX rightPrimary = new WPI_VictorSPX(Constants.DRIVETRAIN_RIGHT_FRONT_MOTOR);
-  public WPI_VictorSPX rightSecondary = new WPI_VictorSPX(Constants.DRIVETRAIN_RIGHT_BACK_MOTOR);
+  public CANSparkMax leftPrimary = new CANSparkMax(Constants.DRIVETRAIN_LEFT_FRONT_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
+  public CANSparkMax leftSecondary = new CANSparkMax(Constants.DRIVETRAIN_LEFT_BACK_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
+  public CANSparkMax rightPrimary = new CANSparkMax(Constants.DRIVETRAIN_RIGHT_FRONT_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
+  public CANSparkMax rightSecondary = new CANSparkMax(Constants.DRIVETRAIN_RIGHT_BACK_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
 
   MotorControllerGroup leftMotors = null;
   MotorControllerGroup rightMotors = null;
