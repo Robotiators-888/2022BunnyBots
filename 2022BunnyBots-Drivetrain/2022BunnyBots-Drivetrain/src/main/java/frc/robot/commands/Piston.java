@@ -10,7 +10,7 @@ public class Piston extends CommandBase{
 
     public Piston(Pneumatics pneumatics) {
         this.pneumatics = pneumatics;
-        addRequirements(this.pneumatics);
+        addRequirements(pneumatics);
     }
 
     @Override

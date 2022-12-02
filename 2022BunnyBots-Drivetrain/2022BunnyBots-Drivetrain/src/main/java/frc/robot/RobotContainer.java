@@ -1,11 +1,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -23,8 +23,8 @@ public class RobotContainer {
 
   public final Pneumatics pneumatics = new Pneumatics();
 
-  Compressor m_Compressor = pneumatics.m_Compressor;
-  DoubleSolenoid m_doubleSolenoid = pneumatics.m_doubleSolenoid;
+  //Compressor m_Compressor = pneumatics.m_Compressor;
+  //DoubleSolenoid m_doubleSolenoid = pneumatics.m_doubleSolenoid;
   
 
   public Joystick joystick = new Joystick(Constants.DRIVER_CONTROLLER);
@@ -39,8 +39,11 @@ public class RobotContainer {
     configureButtonBindings();
 
     // Piston button
-    C_bButton.whenHeld(new Piston(pneumatics));
-
+    //C_bButton.toggleWhenPressed(new Piston(pneumatics));
+    //C_bButton.toggleWhenPressed(new StartEndCommand(pneumatics::pistonOut(), pneumatics::pistonIn(), pneumatics));
+    C_bButton.toggleWhenPressed(new StartEndCommand(pneumatics::pistonOut,
+    pneumatics::pistonIn,pneumatics
+    ));
     drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.RIGHT_AXIS),
         () -> joystick.getRawAxis(Constants.LEFT_AXIS), () -> Constants.speed));
 

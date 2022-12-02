@@ -10,7 +10,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Pneumatics extends SubsystemBase {
     public DoubleSolenoid m_doubleSolenoid =  new DoubleSolenoid(PneumaticsModuleType.CTREPCM,
                  Constants.dSolenoid_forwardChannel, Constants.dSolenoid_reverseChannel);
-    public Compressor m_Compressor = new Compressor(Constants.compressor_module, PneumaticsModuleType.CTREPCM);;
+    public Compressor m_Compressor = new Compressor(Constants.compressor_module, PneumaticsModuleType.CTREPCM);
+
+    public int pistonOutAmount = 0;
+    public int pistonInAmount = 0;
+    
+
 
     public Pneumatics() {
     //    Compressor m_Compressor = new Compressor(Constants.compressor_module, PneumaticsModuleType.CTREPCM);
@@ -22,10 +27,14 @@ public class Pneumatics extends SubsystemBase {
     }
 
     public void pistonOut() {
+        pistonOutAmount++;
+        System.out.println("PistonOut: "+pistonOutAmount);
         m_doubleSolenoid.set(Value.kForward);
     }
 
     public void pistonIn() {
+        pistonInAmount++;
+        System.out.println("PistonIn: "+pistonInAmount);
         m_doubleSolenoid.set(Value.kReverse);
     }
 
