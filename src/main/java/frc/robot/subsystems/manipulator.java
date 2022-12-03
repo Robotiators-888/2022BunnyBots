@@ -56,7 +56,7 @@ public class manipulator extends SubsystemBase {
  }
 
   public void elevationDown() {
-    elevationSpeed *= -1;
+    elevationSpeed = Constats.CLAMP_SPEED * -1;
     elevation.set(elevationSpeed);
   }
   public void elevationEnd() {
