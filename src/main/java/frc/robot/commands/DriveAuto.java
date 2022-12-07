@@ -24,7 +24,7 @@ public class DriveAuto extends CommandBase {
   @Override
   public void execute() {
     //Gets speeds of the left and right sides plus the overall speed
-    drivetrain.setMotors(Constants.AUTO_SPEED, Constants.AUTO_SPEED * -1, Constants.AUTO_SPEED);
+    drivetrain.setMotors(0, Constants.AUTO_SPEED, 1);
     
     //sends the data to the smart dash which can be seen on the driver station
     SmartDashboard.putNumber("Left side speed",Constants.AUTO_SPEED);
@@ -35,7 +35,7 @@ public class DriveAuto extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drivetrain.setMotors(0, 0, 0);
+    drivetrain.setMotors(0, 0, 1);
   }
 
   // Make this return true when this Command no longer needs to run execute()
