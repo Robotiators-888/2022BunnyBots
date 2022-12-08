@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+//import com.revrobotics.CANSparkMax;
+//import com.revrobotics.CANSparkMaxLowLevel;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import frc.robot.Constants;
@@ -15,28 +15,28 @@ public class manipulator extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  public WPI_VictorSPX turn = new WPI_VictorSPX(Constants.MANIPULATOR_TURN_MOTOR);
+  public WPI_VictorSPX lift = new WPI_VictorSPX(Constants.MANIPULATOR_LIFT_MOTOR);
+  // public WPI_VictorSPX elevation = new WPI_VictorSPX(Constants.ELEVATION);
+/*
   public CANSparkMax left = new CANSparkMax(Constants.MANIPULATOR_ARM_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
   public CANSparkMax right = new CANSparkMax(Constants.MANIPULATOR_LIFT_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
   public CANSparkMax elevation = new CANSparkMax(Constants.ELEVATION, CANSparkMaxLowLevel.MotorType.kBrushed);
+*/
   double elevationSpeed = Constants.ELEVATION_SPEED;
-  public CANSparkMax clamp = new CANSparkMax(Constants.CLAMP, CANSparkMaxLowLevel.MotorType.kBrushed);
-  double clampSpeed = Constants.CLAMP_SPEED;
 
   MotorControllerGroup leftMotors = null;
   MotorControllerGroup rightMotors = null;
 
-  DifferentialDrive differentialDrive = null;
 
   public manipulator() {
-    leftMotors = new MotorControllerGroup(left);
-    rightMotors = new MotorControllerGroup(right);
+    leftMotors = new MotorControllerGroup(lift);
+    rightMotors = new MotorControllerGroup(turn);
 
-    differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+    
   }
 
-  public void arcadeManipulator(double moveSpeed, double rotateSpeed) {
-    differentialDrive.arcadeDrive(moveSpeed, rotateSpeed);
-  }
+
 
   public void DriveInversion(){
     leftMotors.setInverted(false);
@@ -47,20 +47,22 @@ public class manipulator extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void setMotors(double leftSpeed, double rightSpeed, double Speed) {
-    differentialDrive.arcadeDrive(leftSpeed * Speed, rightSpeed * Speed);
+  public void setMotors(double liftSpeed, double Speed) {
+    turn.set(liftSpeed * Speed);
   }
   public void elevationUp() {
-    elevationSpeed = Constants.CLAMP_SPEED;
-    elevation.set(elevationSpeed);
+    elevationSpeed = Constants.ELEVATION_SPEED;
+    lift.set(elevationSpeed);
  }
 
   public void elevationDown() {
-    elevationSpeed = Constats.CLAMP_SPEED * -1;
-    elevation.set(elevationSpeed);
+    elevationSpeed = -Constants.ELEVATION_SPEED;
+    lift.set(elevationSpeed);
   }
   public void elevationEnd() {
     elevationSpeed = 0;
-    elevation.set(0.0);
+    lift.set(0.0);
  }
+
+
 }
