@@ -14,13 +14,13 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Drivetrain drivetrain = new Drivetrain();
+  //private final Drivetrain drivetrain = new Drivetrain();
   private final manipulator Manipulator = new manipulator();
 
   public Joystick joystick = new Joystick(Constants.DRIVER_CONTROLLER_1);
   public final JoystickButton aButton = new JoystickButton(joystick, 1);
-  public final JoystickButton rTrigger = new JoystickButton(joystick, 8);
-  public final JoystickButton lTrigger = new JoystickButton(joystick, 7);
+  public final JoystickButton rTrigger = new JoystickButton(joystick, 6);
+  public final JoystickButton lTrigger = new JoystickButton(joystick, 5);
 
 
   /**
@@ -30,8 +30,10 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.RIGHT_AXIS),
-    () -> joystick.getRawAxis(Constants.LEFT_AXIS), () -> Constants.speed));  // Set default commands on subsystems
+    // drivetrain.setDefaultCommand(new DriveArcade(drivetrain, () -> joystick.getRawAxis(Constants.RIGHT_AXIS),
+    // () -> joystick.getRawAxis(Constants.LEFT_AXIS), () -> Constants.speed));  // Set default commands on subsystems
+
+    Manipulator.setDefaultCommand(new ElevationTurn(Manipulator, () -> joystick.getRawAxis(Constants.DAPD_DOWN), () -> Constants.speed)); 
 
   }
 
