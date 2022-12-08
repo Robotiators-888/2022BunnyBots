@@ -19,6 +19,7 @@ public class ElevationUpCMD extends CommandBase{
     // Constructor of the cmd that creates the ability to move elevation up
     public ElevationUpCMD(manipulator Manipulator){
         this.Manipulator = Manipulator;
+
         addRequirements(Manipulator);
     }
   // Called just before this Command runs the first time
