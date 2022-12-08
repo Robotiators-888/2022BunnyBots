@@ -15,11 +15,11 @@ import frc.robot.subsystems.manipulator;
 
 public class ElevationDownCMD extends CommandBase{
     private final manipulator Manipulator;
-    
 
     // Constructor of the cmd that creates the ability to move elevation up
     public ElevationDownCMD(manipulator Manipulator){
         this.Manipulator = Manipulator;
+
         addRequirements(Manipulator);
     }
   // Called just before this Command runs the first time
